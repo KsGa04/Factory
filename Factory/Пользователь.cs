@@ -20,5 +20,12 @@ namespace Factory
         public Nullable<int> id_role { get; set; }
     
         public virtual Роли Роли { get; set; }
+
+        public Пользователь(string login, string password, int id_role = 1)
+        {
+            this.login = login;
+            this.password = password;
+            this.id_role = id_role;
+        }
     }
 }
