@@ -14,9 +14,18 @@ namespace Factory
     
     public partial class Изделия
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Изделия()
+        {
+            this.Заказанные_изделия = new HashSet<Заказанные_изделия>();
+        }
+    
         public string Артикул { get; set; }
         public string Наименование { get; set; }
         public double Ширина { get; set; }
         public double Длина { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заказанные_изделия> Заказанные_изделия { get; set; }
     }
 }

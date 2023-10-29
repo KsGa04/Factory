@@ -12,13 +12,12 @@ namespace Factory
     using System;
     using System.Collections.Generic;
     
-    public partial class Пользователь
+    public partial class Заказ
     {
-        public int idUser { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public Nullable<int> id_role { get; set; }
+        public int Номер { get; set; }
+        public System.DateTime Дата { get; set; }
+        public string Этап_выполнения { get; set; }
     
-        public virtual Роли Роли { get; set; }
+        public virtual Заказанные_изделия Заказанные_изделия { get; set; }
     }
 }

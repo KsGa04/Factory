@@ -25,6 +25,8 @@ namespace Factory
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Заказ> Заказ { get; set; }
+        public virtual DbSet<Заказанные_изделия> Заказанные_изделия { get; set; }
         public virtual DbSet<Изделия> Изделия { get; set; }
         public virtual DbSet<Пользователь> Пользователь { get; set; }
         public virtual DbSet<Рисунки> Рисунки { get; set; }

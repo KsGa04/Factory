@@ -5,6 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище praktikaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Номер" />
+          </Key>
+          <Property Name="Номер" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Дата" Type="date" Nullable="false" />
+          <Property Name="Этап_выполнения" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Заказанные_изделия">
+          <Key>
+            <PropertyRef Name="Номер_заказа" />
+          </Key>
+          <Property Name="Номер_заказа" Type="int" Nullable="false" />
+          <Property Name="Артикул_изделия" Type="nchar" MaxLength="100" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Изделия">
           <Key>
             <PropertyRef Name="Артикул" />
@@ -111,7 +127,31 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Наименование" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Пользоват__id_ro__4E88ABD4">
+        <Association Name="FK__Заказанны__Артик__534D60F1">
+          <End Role="Изделия" Type="Self.Изделия" Multiplicity="0..1" />
+          <End Role="Заказанные_изделия" Type="Self.Заказанные_изделия" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Изделия">
+              <PropertyRef Name="Артикул" />
+            </Principal>
+            <Dependent Role="Заказанные_изделия">
+              <PropertyRef Name="Артикул_изделия" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Заказанны__Номер__52593CB8">
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="1" />
+          <End Role="Заказанные_изделия" Type="Self.Заказанные_изделия" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Номер" />
+            </Principal>
+            <Dependent Role="Заказанные_изделия">
+              <PropertyRef Name="Номер_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пользоват__id_ro__5441852A">
           <End Role="Роли" Type="Self.Роли" Multiplicity="0..1" />
           <End Role="Пользователь" Type="Self.Пользователь" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,6 +260,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище praktikaModelContainer">
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказанные_изделия" EntityType="Self.Заказанные_изделия" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Изделия" EntityType="Self.Изделия" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Пользователь" EntityType="Self.Пользователь" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Рисунки" EntityType="Self.Рисунки" Schema="dbo" store:Type="Tables" />
@@ -233,7 +275,15 @@
           <EntitySet Name="Фурнитура" EntityType="Self.Фурнитура" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Фурнитура_Типы" EntityType="Self.Фурнитура_Типы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Цвета" EntityType="Self.Цвета" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Пользоват__id_ro__4E88ABD4" Association="Self.FK__Пользоват__id_ro__4E88ABD4">
+          <AssociationSet Name="FK__Заказанны__Артик__534D60F1" Association="Self.FK__Заказанны__Артик__534D60F1">
+            <End Role="Изделия" EntitySet="Изделия" />
+            <End Role="Заказанные_изделия" EntitySet="Заказанные_изделия" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Заказанны__Номер__52593CB8" Association="Self.FK__Заказанны__Номер__52593CB8">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="Заказанные_изделия" EntitySet="Заказанные_изделия" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пользоват__id_ro__5441852A" Association="Self.FK__Пользоват__id_ro__5441852A">
             <End Role="Роли" EntitySet="Роли" />
             <End Role="Пользователь" EntitySet="Пользователь" />
           </AssociationSet>
@@ -275,6 +325,25 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="praktikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Номер" />
+          </Key>
+          <Property Name="Номер" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Этап_выполнения" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Заказанные_изделия" Relationship="Self.FK__Заказанны__Номер__52593CB8" FromRole="Заказ" ToRole="Заказанные_изделия" />
+        </EntityType>
+        <EntityType Name="Заказанные_изделия">
+          <Key>
+            <PropertyRef Name="Номер_заказа" />
+          </Key>
+          <Property Name="Номер_заказа" Type="Int32" Nullable="false" />
+          <Property Name="Артикул_изделия" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK__Заказанны__Номер__52593CB8" FromRole="Заказанные_изделия" ToRole="Заказ" />
+          <NavigationProperty Name="Изделия" Relationship="Self.FK__Заказанны__Артик__534D60F1" FromRole="Заказанные_изделия" ToRole="Изделия" />
+        </EntityType>
         <EntityType Name="Изделия">
           <Key>
             <PropertyRef Name="Артикул" />
@@ -283,6 +352,7 @@
           <Property Name="Наименование" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ширина" Type="Double" Nullable="false" />
           <Property Name="Длина" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Заказанные_изделия" Relationship="Self.FK__Заказанны__Артик__534D60F1" FromRole="Изделия" ToRole="Заказанные_изделия" />
         </EntityType>
         <EntityType Name="Пользователь">
           <Key>
@@ -292,7 +362,7 @@
           <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id_role" Type="Int32" />
-          <NavigationProperty Name="Роли" Relationship="Self.FK__Пользоват__id_ro__4E88ABD4" FromRole="Пользователь" ToRole="Роли" />
+          <NavigationProperty Name="Роли" Relationship="Self.FK__Пользоват__id_ro__5441852A" FromRole="Пользователь" ToRole="Роли" />
         </EntityType>
         <EntityType Name="Рисунки">
           <Key>
@@ -308,7 +378,7 @@
           </Key>
           <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Пользователь" Relationship="Self.FK__Пользоват__id_ro__4E88ABD4" FromRole="Роли" ToRole="Пользователь" />
+          <NavigationProperty Name="Пользователь" Relationship="Self.FK__Пользоват__id_ro__5441852A" FromRole="Роли" ToRole="Пользователь" />
         </EntityType>
         <EntityType Name="Составы">
           <Key>
@@ -359,7 +429,31 @@
           <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Ткани" Relationship="Self.Ткани_Цвета" FromRole="Цвета" ToRole="Ткани" />
         </EntityType>
-        <Association Name="FK__Пользоват__id_ro__4E88ABD4">
+        <Association Name="FK__Заказанны__Номер__52593CB8">
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="1" />
+          <End Role="Заказанные_изделия" Type="Self.Заказанные_изделия" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Номер" />
+            </Principal>
+            <Dependent Role="Заказанные_изделия">
+              <PropertyRef Name="Номер_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Заказанны__Артик__534D60F1">
+          <End Role="Изделия" Type="Self.Изделия" Multiplicity="0..1" />
+          <End Role="Заказанные_изделия" Type="Self.Заказанные_изделия" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Изделия">
+              <PropertyRef Name="Артикул" />
+            </Principal>
+            <Dependent Role="Заказанные_изделия">
+              <PropertyRef Name="Артикул_изделия" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пользоват__id_ro__5441852A">
           <End Role="Роли" Type="Self.Роли" Multiplicity="0..1" />
           <End Role="Пользователь" Type="Self.Пользователь" Multiplicity="*" />
           <ReferentialConstraint>
@@ -388,6 +482,8 @@
           <End Role="Фурнитура" Type="Self.Фурнитура" Multiplicity="*" />
         </Association>
         <EntityContainer Name="praktikaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+          <EntitySet Name="Заказанные_изделия" EntityType="Self.Заказанные_изделия" />
           <EntitySet Name="Изделия" EntityType="Self.Изделия" />
           <EntitySet Name="Пользователь" EntityType="Self.Пользователь" />
           <EntitySet Name="Рисунки" EntityType="Self.Рисунки" />
@@ -397,7 +493,15 @@
           <EntitySet Name="Ткани" EntityType="Self.Ткани" />
           <EntitySet Name="Фурнитура" EntityType="Self.Фурнитура" />
           <EntitySet Name="Цвета" EntityType="Self.Цвета" />
-          <AssociationSet Name="FK__Пользоват__id_ro__4E88ABD4" Association="Self.FK__Пользоват__id_ro__4E88ABD4">
+          <AssociationSet Name="FK__Заказанны__Номер__52593CB8" Association="Self.FK__Заказанны__Номер__52593CB8">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="Заказанные_изделия" EntitySet="Заказанные_изделия" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Заказанны__Артик__534D60F1" Association="Self.FK__Заказанны__Артик__534D60F1">
+            <End Role="Изделия" EntitySet="Изделия" />
+            <End Role="Заказанные_изделия" EntitySet="Заказанные_изделия" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пользоват__id_ro__5441852A" Association="Self.FK__Пользоват__id_ro__5441852A">
             <End Role="Роли" EntitySet="Роли" />
             <End Role="Пользователь" EntitySet="Пользователь" />
           </AssociationSet>
@@ -424,6 +528,24 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище praktikaModelContainer" CdmEntityContainer="praktikaEntities">
+          <EntitySetMapping Name="Заказ">
+            <EntityTypeMapping TypeName="praktikaModel.Заказ">
+              <MappingFragment StoreEntitySet="Заказ">
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="Этап_выполнения" ColumnName="Этап_выполнения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заказанные_изделия">
+            <EntityTypeMapping TypeName="praktikaModel.Заказанные_изделия">
+              <MappingFragment StoreEntitySet="Заказанные_изделия">
+                <ScalarProperty Name="Номер_заказа" ColumnName="Номер_заказа" />
+                <ScalarProperty Name="Артикул_изделия" ColumnName="Артикул_изделия" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Изделия">
             <EntityTypeMapping TypeName="praktikaModel.Изделия">
               <MappingFragment StoreEntitySet="Изделия">
