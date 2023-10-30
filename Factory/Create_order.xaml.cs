@@ -15,27 +15,32 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для CustomerMain.xaml
+    /// Логика взаимодействия для Create_order.xaml
     /// </summary>
-    public partial class CustomerMain : Window
+    public partial class Create_order : Window
     {
-        public CustomerMain(Пользователь user)
+        private praktikaEntities _db = new praktikaEntities();
+        public Create_order()
         {
             InitializeComponent();
+            foreach (var d in _db.Изделия)
+            {
+                goods.Items.Add(d.Наименование + "-" + d.Артикул);
+            }
         }
-
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Hide();
         }
-
-        private void create_order_Click(object sender, RoutedEventArgs e)
+        private void Create_Order_Click(object sender, RoutedEventArgs e)
         {
-            Create_order create_Order = new Create_order();
-            create_Order.Show();
-            this.Hide();
+            using (praktikaEntities  db = new praktikaEntities())
+            {
+                string[] good = goods.SelectedItem.ToString().Split(new char[] { '-' });
+                MessageBox.Show(good[0]);
+            }
         }
     }
 }

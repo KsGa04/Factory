@@ -19,15 +19,29 @@ namespace Factory
     /// </summary>
     public partial class StorekeeperMain : Window
     {
+        public Пользователь user;
         public StorekeeperMain(Пользователь user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();
+            this.Hide();
+        }
+        private void Fabric_list_Click(object sender, RoutedEventArgs e)
+        {
+            List_fabric list_Fabric = new List_fabric(user);
+            list_Fabric.Show();
+            this.Hide();
+        }
+        private void Furniture_list_Click(object sender, RoutedEventArgs e)
+        {
+            List_furniture list_Fabric = new List_furniture(user);
+            list_Fabric.Show();
             this.Hide();
         }
     }

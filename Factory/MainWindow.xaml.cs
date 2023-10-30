@@ -31,17 +31,18 @@ namespace Factory
         {
             using (praktikaEntities db = new praktikaEntities())
             {
-                user = db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).First();
-                if (user == null)
+                if (db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).Any())
                 {
-                    MessageBox.Show("Данных аккаунт отсутствует либо допущены ошибки в логине и пароле");
-                }
-                else
-                {
+                    user = db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).First();
                     if (user.id_role == 1) { CustomerMain customer = new CustomerMain(user); customer.Show(); this.Hide(); }
                     else if (user.id_role == 2) { ManagerMain manager = new ManagerMain(user); manager.Show(); this.Hide(); }
                     else if (user.id_role == 3) { StorekeeperMain storekeeper = new StorekeeperMain(user); storekeeper.Show(); this.Hide(); }
                     else if (user.id_role == 4) { DirectorateMain directorate = new DirectorateMain(user); directorate.Show(); this.Hide(); }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Данных аккаунт отсутствует либо допущены ошибки в логине и пароле");
                 }
             }
         }

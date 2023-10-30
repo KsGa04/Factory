@@ -23,5 +23,12 @@ namespace Factory
         {
             InitializeComponent();
         }
+
+        private void Authorization_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Hide();
+        }
     }
 }

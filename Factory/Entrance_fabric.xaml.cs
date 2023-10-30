@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для CustomerMain.xaml
+    /// Логика взаимодействия для Entrance_fabric.xaml
     /// </summary>
-    public partial class CustomerMain : Window
+    public partial class Entrance_fabric : Window
     {
-        public CustomerMain(Пользователь user)
+        public Entrance_fabric()
         {
             InitializeComponent();
         }
@@ -28,13 +28,6 @@ namespace Factory
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            this.Hide();
-        }
-
-        private void create_order_Click(object sender, RoutedEventArgs e)
-        {
-            Create_order create_Order = new Create_order();
-            create_Order.Show();
             this.Hide();
         }
     }

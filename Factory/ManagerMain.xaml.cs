@@ -19,14 +19,18 @@ namespace Factory
     /// </summary>
     public partial class ManagerMain : Window
     {
+        public Пользователь user;
         public ManagerMain(Пользователь user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Hide();
         }
     }
 }
