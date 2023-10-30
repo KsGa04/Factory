@@ -29,6 +29,7 @@
           <Property Name="Наименование" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Ширина" Type="float" Nullable="false" />
           <Property Name="Длина" Type="float" Nullable="false" />
+          <Property Name="Цена" Type="money" />
         </EntityType>
         <EntityType Name="Пользователь">
           <Key>
@@ -352,6 +353,7 @@
           <Property Name="Наименование" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ширина" Type="Double" Nullable="false" />
           <Property Name="Длина" Type="Double" Nullable="false" />
+          <Property Name="Цена" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Заказанные_изделия" Relationship="Self.FK__Заказанны__Артик__534D60F1" FromRole="Изделия" ToRole="Заказанные_изделия" />
         </EntityType>
         <EntityType Name="Пользователь">
@@ -553,6 +555,7 @@
                 <ScalarProperty Name="Наименование" ColumnName="Наименование" />
                 <ScalarProperty Name="Ширина" ColumnName="Ширина" />
                 <ScalarProperty Name="Длина" ColumnName="Длина" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
