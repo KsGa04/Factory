@@ -19,11 +19,5 @@ namespace Factory
         public string Этап_выполнения { get; set; }
     
         public virtual Заказанные_изделия Заказанные_изделия { get; set; }
-
-        public Заказ(System.DateTime Дата, string Этап_выполнения)
-        {
-            this.Дата = Дата;
-            this.Этап_выполнения = Этап_выполнения;
-        }
     }
 }

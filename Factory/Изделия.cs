@@ -25,6 +25,7 @@ namespace Factory
         public double Ширина { get; set; }
         public double Длина { get; set; }
         public Nullable<decimal> Цена { get; set; }
+        public Nullable<int> Количество { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Заказанные_изделия> Заказанные_изделия { get; set; }
