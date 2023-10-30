@@ -32,5 +32,12 @@ namespace Factory
             mainWindow.Show();
             this.Hide();
         }
+
+        private void order_list_Click(object sender, RoutedEventArgs e)
+        {
+            List_otder list_Otder = new List_otder(user);
+            list_Otder.Show();
+            this.Hide();
+        }
     }
 }

@@ -19,10 +19,12 @@ namespace Factory
     /// </summary>
     public partial class List_furniture : Window
     {
+        public Пользователь пользователь;
         public List_furniture(Пользователь пользователь)
         {
             InitializeComponent();
             ListViewLoad();
+            this.пользователь = пользователь;
         }
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +52,12 @@ namespace Factory
                             select data;
                 Fabric.ItemsSource = query.ToList();
             }
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            StorekeeperMain storekeeperMain = new StorekeeperMain(пользователь);
+            storekeeperMain.Show();
+            this.Hide();
         }
     }
 }

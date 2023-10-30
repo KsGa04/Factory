@@ -12,7 +12,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border BorderBrush="#e0a9af" BorderThickness="2" Grid.Row="0"/>
-            <Label FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Список тканей"/>
+        <Button Content='&#8592;' Background="#e0a9af" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" FontSize="17" x:Name="Back" Click="Back_Click"/>
+        <Label FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Список тканей"/>
             <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
         <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0" FontSize="18"/>
         <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="150" Height="30" Margin="10" FontSize="15" Background="#b5d5ca" x:Name="Find"/>

@@ -82,6 +82,9 @@
     <Compile Include="List_furniture.xaml.cs">
       <DependentUpon>List_furniture.xaml</DependentUpon>
     </Compile>
+    <Compile Include="List_otder.xaml.cs">
+      <DependentUpon>List_otder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagerMain.xaml.cs">
       <DependentUpon>ManagerMain.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="List_furniture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="List_otder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,15 +15,26 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для Entrance_fabric.xaml
+    /// Логика взаимодействия для List_otder.xaml
     /// </summary>
-    public partial class Entrance_fabric : Window
+    public partial class List_otder : Window
     {
         public Пользователь пользователь;
-        public Entrance_fabric(Пользователь пользователь)
+        public List_otder(Пользователь пользователь)
         {
             InitializeComponent();
             this.пользователь = пользователь;
+        }
+        public void ListViewLoad()
+        {
+            using (praktikaEntities db = new praktikaEntities())
+            {
+                var orders = db.Заказ.ToList();
+                var order_product = db.Изделия.ToList();
+
+                Fabric.ItemsSource = orders;
+                Fabric.ItemsSource = order_product;
+            }
         }
 
         private void Authorization_Click(object sender, RoutedEventArgs e)
@@ -32,6 +43,7 @@ namespace Factory
             mainWindow.Show();
             this.Hide();
         }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             StorekeeperMain storekeeperMain = new StorekeeperMain(пользователь);

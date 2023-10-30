@@ -19,9 +19,11 @@ namespace Factory
     /// </summary>
     public partial class CustomerMain : Window
     {
+        public Пользователь Пользователь;
         public CustomerMain(Пользователь user)
         {
             InitializeComponent();
+            Пользователь = user;
         }
 
         private void Authorization_Click(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ namespace Factory
 
         private void create_order_Click(object sender, RoutedEventArgs e)
         {
-            Create_order create_Order = new Create_order();
+            Create_order create_Order = new Create_order(Пользователь);
             create_Order.Show();
             this.Hide();
         }

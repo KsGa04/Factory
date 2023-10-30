@@ -12,6 +12,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border BorderBrush="#e0a9af" BorderThickness="2" Grid.Row="0"/>
+        <Button Content='&#8592;' Background="#e0a9af" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" FontSize="17" x:Name="Back" Click="Back_Click"/>
         <Label Content="Создание заказа" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
         <Grid Grid.Row="1">
@@ -31,9 +32,9 @@
             <Label Content="Количество:" Grid.Column="0" Grid.Row="2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Итоговая сумма:" Grid.Column="0" Grid.Row="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button Content="Оформить" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Height="40" FontSize="18" Background="#e0a9af" x:Name="Create_Order" Click="Create_Order_Click"/>
-            <ComboBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Background="#b5d5ca" FontSize="16" x:Name="goods"/>
+            <ComboBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Background="#b5d5ca" FontSize="16" x:Name="goods" SelectionChanged="goods_SelectionChanged"/>
             <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="price"/>
-            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="count"/>
+            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="count" TextChanged="count_TextChanged"/>
             <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="160" Height="30" Background="#e0a9af" FontSize="16" Margin="10" x:Name="total_sum"/>
         </Grid>
     </Grid>
