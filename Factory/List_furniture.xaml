@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factory"
         mc:Ignorable="d"
-        Title="List_furniture" Height="600" Width="600">
+        Icon="./Resource/logo-02.jpg"
+        Title="Список фурнитуры" Height="600" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>

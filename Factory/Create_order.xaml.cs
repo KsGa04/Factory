@@ -43,18 +43,27 @@ namespace Factory
         {
             using (praktikaEntities db = new praktikaEntities())
             {
-                string selectedItem = goods.SelectedItem.ToString();
-                string[] good = selectedItem.Split(new char[] { '-' });
-                string Name = good[1];
-                Изделия изделия = db.Изделия.Where(x => x.Артикул == Name).FirstOrDefault();
-                price.Text = изделия.Цена.ToString();
-                int count_good = Convert.ToInt32(count.Text);
-                int sum = Convert.ToInt32(total_sum.Text);
-                Заказ заказ = new Заказ(System.DateTime.Now, "Новый");
-                db.Заказ.Add(заказ);
-                Заказанные_изделия заказанные_Изделия = new Заказанные_изделия(заказ.Номер,изделия.Артикул, count_good);
-                db.Заказанные_изделия.Add(заказанные_Изделия);
-                db.SaveChanges();
+                if (count.Text == null || count.Text == "0")
+                {
+                    MessageBox.Show("Добавьте количество необходимого изделия");
+                }
+                else
+                {
+                    string selectedItem = goods.SelectedItem.ToString();
+                    string[] good = selectedItem.Split(new char[] { '-' });
+                    string Name = good[1];
+                    Изделия изделия = db.Изделия.Where(x => x.Артикул == Name).FirstOrDefault();
+                    price.Text = изделия.Цена.ToString();
+                    int count_good = Convert.ToInt32(count.Text);
+                    int sum = Convert.ToInt32(total_sum.Text);
+                    Заказ заказ = new Заказ(System.DateTime.Now, "Новый");
+                    db.Заказ.Add(заказ);
+                    Заказанные_изделия заказанные_Изделия = new Заказанные_изделия(заказ.Номер, изделия.Артикул, count_good);
+                    db.Заказанные_изделия.Add(заказанные_Изделия);
+                    db.SaveChanges();
+                    MessageBox.Show("Заказ создан");
+                    goods.SelectedItem = null;
+                }
             }
         }
 
@@ -88,7 +97,7 @@ namespace Factory
                 else
                 {
                     int count_good = Convert.ToInt32(count.Text);
-                    total_sum.Text = (изделия.Цена * count_good).ToString();
+                    total_sum.Text = Convert.ToInt32(изделия.Цена * count_good).ToString();
                 }
             }
         }
@@ -98,6 +107,38 @@ namespace Factory
             CustomerMain customerMain = new CustomerMain(пользователь);
             customerMain.Show();
             this.Hide();
+        }
+
+        private void New_order_Click(object sender, RoutedEventArgs e)
+        {
+            using (praktikaEntities db = new praktikaEntities())
+            {
+                if (count.Text == null || count.Text == "0")
+                {
+                    MessageBox.Show("Добавьте количество необходимого изделия");
+                }
+                else
+                {
+                    string selectedItem = goods.SelectedItem.ToString();
+                    string[] good = selectedItem.Split(new char[] { '-' });
+                    string Name = good[1];
+                    Изделия изделия = db.Изделия.Where(x => x.Артикул == Name).FirstOrDefault();
+                    price.Text = изделия.Цена.ToString();
+                    int count_good = Convert.ToInt32(count.Text);
+                    int sum = Convert.ToInt32(total_sum.Text);
+                    Заказ заказ = new Заказ(System.DateTime.Now, "Новый");
+                    db.Заказ.Add(заказ);
+                    Заказанные_изделия заказанные_Изделия = new Заказанные_изделия(заказ.Номер, изделия.Артикул, count_good);
+                    db.Заказанные_изделия.Add(заказанные_Изделия);
+                    db.SaveChanges();
+                    MessageBox.Show("Заказ создан");
+                    goods.SelectedItem = null;
+                }
+            }
+            Create_order order = new Create_order(пользователь);
+            order.Show();
+            this.Hide();
+
         }
     }
 }

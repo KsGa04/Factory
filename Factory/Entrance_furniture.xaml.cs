@@ -15,22 +15,21 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для Entrance_fabric.xaml
+    /// Логика взаимодействия для Entrance_furniture.xaml
     /// </summary>
-    public partial class Entrance_fabric : Window
+    public partial class Entrance_furniture : Window
     {
-        private praktikaEntities _db = new praktikaEntities();
         public Пользователь пользователь;
-        public Entrance_fabric(Пользователь пользователь)
+        private praktikaEntities _db = new praktikaEntities();
+        public Entrance_furniture(Пользователь пользователь)
         {
             InitializeComponent();
             this.пользователь = пользователь;
-            foreach (var d in _db.Ткани)
+            foreach (var d in _db.Фурнитура)
             {
                 goods.Items.Add(d.Артикул);
             }
         }
-
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -51,10 +50,10 @@ namespace Factory
 
         private void entrance_fabric_Click(object sender, RoutedEventArgs e)
         {
-            using (praktikaEntities db= new praktikaEntities())
+            using (praktikaEntities db = new praktikaEntities())
             {
                 var good = goods.SelectedItem.ToString();
-                Ткани ткани = db.Ткани.Where(x => x.Артикул == good).FirstOrDefault();
+                Фурнитура ткани = db.Фурнитура.Where(x => x.Артикул == good).FirstOrDefault();
                 ткани.Ширина = Convert.ToDouble(length.Text);
                 ткани.Цена = Convert.ToDecimal(price.Text);
                 db.SaveChanges();

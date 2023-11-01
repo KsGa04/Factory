@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factory"
         mc:Ignorable="d"
-        Title="CustomerMain" Height="600" Width="600">
+        Icon="./Resource/logo-02.jpg"
+        Title="Главное окно" Height="600" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -16,5 +17,6 @@
         <Label Content="Заказчик" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
         <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#e0a9af" Width="200" Height="40" FontSize="15" Content="Оформить заказ" Margin="10" x:Name="create_order" Click="create_order_Click"/>
+        <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#e0a9af" Width="200" Height="40" FontSize="15" Content="Просмотр заказов" Margin="60" x:Name="order_list" Click="order_list_Click"/>
     </Grid>
 </Window>

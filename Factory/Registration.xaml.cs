@@ -41,15 +41,23 @@ namespace Factory
             {
                 MessageBox.Show("Неправильная длина пароля");
             }
+            else if (password.Password == "" || login.Text == "") { MessageBox.Show("Заполните все поля");  }
             else
             {
                 using (praktikaEntities db = new praktikaEntities())
                 {
-                    Reg(login.Text, password.Password);
-                    MessageBox.Show("Аккаунт " + login.Text + " зарегистрирован");
-                    login.Clear();
-                    password.Clear();
-                    this.Hide();
+                    if (db.Пользователь.Where(x => x.login == login.Text).Any())
+                    {
+                        MessageBox.Show("Пользователь с таким логином уже создан");
+                    }
+                    else
+                    {
+                        Reg(login.Text, password.Password);
+                        MessageBox.Show("Аккаунт " + login.Text + " зарегистрирован");
+                        login.Clear();
+                        password.Clear();
+                        this.Hide();
+                    }
 
                 }
             }
@@ -57,7 +65,9 @@ namespace Factory
 
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Hide();
         }
     }
 }

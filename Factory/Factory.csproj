@@ -41,6 +41,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -76,11 +80,20 @@
     <Compile Include="Entrance_fabric.xaml.cs">
       <DependentUpon>Entrance_fabric.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entrance_furniture.xaml.cs">
+      <DependentUpon>Entrance_furniture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="List_fabric.xaml.cs">
       <DependentUpon>List_fabric.xaml</DependentUpon>
     </Compile>
     <Compile Include="List_furniture.xaml.cs">
       <DependentUpon>List_furniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="List_goods.xaml.cs">
+      <DependentUpon>List_goods.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="List_orders_manager.xaml.cs">
+      <DependentUpon>List_orders_manager.xaml</DependentUpon>
     </Compile>
     <Compile Include="List_otder.xaml.cs">
       <DependentUpon>List_otder.xaml</DependentUpon>
@@ -105,6 +118,12 @@
     </Compile>
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report_fabric.xaml.cs">
+      <DependentUpon>Report_fabric.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Report_furniture.xaml.cs">
+      <DependentUpon>Report_furniture.xaml</DependentUpon>
     </Compile>
     <Compile Include="StorekeeperMain.xaml.cs">
       <DependentUpon>StorekeeperMain.xaml</DependentUpon>
@@ -158,11 +177,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Entrance_furniture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="List_fabric.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="List_furniture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="List_goods.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="List_orders_manager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,6 +218,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report_fabric.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Report_furniture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +282,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\logo-02.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

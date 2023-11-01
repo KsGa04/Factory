@@ -35,8 +35,8 @@ namespace Factory
 
         private void order_list_Click(object sender, RoutedEventArgs e)
         {
-            List_otder list_Otder = new List_otder(user);
-            list_Otder.Show();
+            List_orders_manager list_Orders_Manager = new List_orders_manager(user);
+            list_Orders_Manager.Show();
             this.Hide();
         }
     }

@@ -44,5 +44,19 @@ namespace Factory
             list_Fabric.Show();
             this.Hide();
         }
+
+        private void Entrance_Click(object sender, RoutedEventArgs e)
+        {
+            Entrance_fabric entrance_Fabric = new Entrance_fabric(user);
+            entrance_Fabric.Show();
+            this.Hide();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Entrance_furniture entrance_Furniture = new Entrance_furniture(user);
+            entrance_Furniture.Show();
+            this.Hide();
+        }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factory"
         mc:Ignorable="d"
-        Title="Create_order" Height="500" Width="500">
+        Icon="./Resource/logo-02.jpg"
+        Title="Создание заказа" Height="500" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -31,7 +32,8 @@
             <Label Content="Стоимость:" Grid.Column="0" Grid.Row="1" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Количество:" Grid.Column="0" Grid.Row="2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Итоговая сумма:" Grid.Column="0" Grid.Row="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Content="Оформить" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Height="40" FontSize="18" Background="#e0a9af" x:Name="Create_Order" Click="Create_Order_Click"/>
+            <Button Content="Оформить" Grid.Row="4" Grid.Column="0" Width="170" Height="40" FontSize="18" Background="#e0a9af" x:Name="Create_Order" Click="Create_Order_Click"/>
+            <Button Content="Добавить еще изделие" Grid.Row="4" Grid.Column="1" Width="200" Height="40" FontSize="18" Background="#e0a9af" x:Name="New_order" Click="New_order_Click"/>
             <ComboBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Background="#b5d5ca" FontSize="16" x:Name="goods" SelectionChanged="goods_SelectionChanged"/>
             <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="price"/>
             <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="count" TextChanged="count_TextChanged"/>

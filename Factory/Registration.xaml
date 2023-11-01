@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factory"
         mc:Ignorable="d"
-        Title="Registration" Height="500" Width="500">
+        Icon="./Resource/logo-02.jpg"
+        Title="Регистрация" Height="500" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

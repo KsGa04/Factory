@@ -24,16 +24,14 @@ namespace Factory
         {
             InitializeComponent();
             this.пользователь = пользователь;
+            ListViewLoad();
         }
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())
             {
                 var orders = db.Заказ.ToList();
-                var order_product = db.Изделия.ToList();
-
                 Fabric.ItemsSource = orders;
-                Fabric.ItemsSource = order_product;
             }
         }
 
@@ -46,7 +44,7 @@ namespace Factory
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            StorekeeperMain storekeeperMain = new StorekeeperMain(пользователь);
+            CustomerMain storekeeperMain = new CustomerMain(пользователь);
             storekeeperMain.Show();
             this.Hide();
         }

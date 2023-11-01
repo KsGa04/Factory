@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Factory"
         mc:Ignorable="d"
-        Title="List_otder" Height="600" Width="600">
+        Icon="./Resource/logo-02.jpg"
+        Title="Спсиок заказов" Height="600" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -15,16 +16,43 @@
         <Button Content='&#8592;' Background="#e0a9af" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" FontSize="17" x:Name="Back" Click="Back_Click"/>
         <Label FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Список заказов"/>
         <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
-        <ListView Grid.Row="1" Foreground="Black" FontSize="20" Name="Fabric"  Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}" Width="100">Номер</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Артикул_изделия}" Width="230">Артикул_изделия</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Количество}">Количество</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Этап_выполнения}">Этап_выполнения</GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Row="1" Foreground="Black" FontSize="20" Name="Fabric" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}" Width="100">Номер</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Этап_выполнения}">Этап_выполнения</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--<Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Номер заказа:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16"/>
+                <Label Content="Артикул изделия:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16"/>
+                <Label Content="Количество:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16"/>
+                <Label Content="Этап выполнения:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16"/>
+                <Button Content="Изменить" Grid.Row="4" Grid.ColumnSpan="2" Background="#e0a9af" Width="120" Height="30"/>
+                <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Width="120" Height="30" x:Name="number"/>
+                <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Width="120" Height="30" x:Name="articul"/>
+                <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Width="120" Height="30" x:Name="count"/>
+                <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Width="120" Height="30" x:Name="stage"/>
+            </Grid>-->
+        </Grid>
     </Grid>
 </Window>
