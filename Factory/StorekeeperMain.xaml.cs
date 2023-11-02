@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Factory
 {
-    /// <summary>
-    /// Логика взаимодействия для StorekeeperMain.xaml
-    /// </summary>
     public partial class StorekeeperMain : Window
     {
         public Пользователь user;
@@ -56,6 +41,29 @@ namespace Factory
         {
             Entrance_furniture entrance_Furniture = new Entrance_furniture(user);
             entrance_Furniture.Show();
+            this.Hide();
+        }
+
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory inventory = new Inventory(user);
+            inventory.Show();
+            this.Hide();
+        }
+
+        private void WriteOff_furniture_Click(object sender, RoutedEventArgs e)
+        {
+            WriteOff_furniture writeOff_Furniture = new WriteOff_furniture(user);
+            writeOff_Furniture.Show();
+            this.Hide();
+
+        }
+
+        private void WriteOff_fabric_Click(object sender, RoutedEventArgs e)
+        {
+          
+            WriteOff_Fabric writeOff_Fabric = new WriteOff_Fabric(user);
+            writeOff_Fabric.Show();
             this.Hide();
         }
     }

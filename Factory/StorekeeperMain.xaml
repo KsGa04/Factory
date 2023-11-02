@@ -29,6 +29,8 @@
         <Button Grid.Row="1" Content="Список фурнитуры" Margin="60" Click="Furniture_list_Click"/>
         <Button Grid.Row="1" Content="Поступление тканей" Margin="110" x:Name="Entrance" Click="Entrance_Click"/>
         <Button Grid.Row="1" Content="Поступление фурнитуры" Margin="160" Click="Button_Click"/>
-        <Button Grid.Row="1" Content="Инвентаризация" Margin="0, 210, 0, 0"/>
+        <Button Grid.Row="1" Content="Списание тканей" Margin="0,210,0,0" x:Name="WriteOff_fabric" Click="WriteOff_fabric_Click"/>
+        <Button Grid.Row="1" Content="Списание фурнитуры" Margin="0,260,0,0" x:Name="WriteOff_furniture" Click="WriteOff_furniture_Click"/>
+        <Button Grid.Row="1" Content="Инвентаризация" Margin="0, 310, 0, 0" x:Name="Inventory" Click="Inventory_Click"/>
     </Grid>
 </Window>
