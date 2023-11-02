@@ -7,15 +7,25 @@
         mc:Ignorable="d"
         Icon="./Resource/logo-02.jpg"
         Title="Отчет по тканям" Height="600" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#e0a9af"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border BorderBrush="#e0a9af" BorderThickness="2" Grid.Row="0"/>
-        <Button Content='&#8592;' Background="#e0a9af" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" FontSize="17" x:Name="Back" Click="Back_Click"/>
+        <Button Content='&#8592;' HorizontalAlignment="Left" Width="30" Height="30" x:Name="Back" Click="Back_Click"/>
         <Label FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Отчет по тканям"/>
-        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
         <ListView Grid.Row="1" Foreground="Black" FontSize="20" Name="Fabric"  Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
@@ -27,6 +37,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Оформить" Width="120" Height="30" Background="#e0a9af" Grid.Row="1" VerticalAlignment="Bottom" Margin="30" x:Name="report" Click="report_Click"/>
+        <Button Content="Оформить" Grid.Row="1" VerticalAlignment="Bottom" Margin="30" x:Name="report" Click="report_Click"/>
     </Grid>
 </Window>

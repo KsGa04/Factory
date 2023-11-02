@@ -26,7 +26,9 @@ namespace Factory
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Авторизация пользователя по ролям
+        /// </summary>
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())

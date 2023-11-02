@@ -36,6 +36,9 @@ namespace Factory
             mainWindow.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Заполение ListView данными из таблицы Заказы
+        /// </summary>
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -47,6 +50,9 @@ namespace Factory
                 Fabric.ItemsSource = orders_goods;
             }
         }
+        /// <summary>
+        /// Изменение статуса заказа
+        /// </summary>
         private void Save_changes_Click(object sender, RoutedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())

@@ -26,6 +26,9 @@ namespace Factory
             this.пользователь = пользователь;
             ListViewLoad();
         }
+        /// <summary>
+        /// Заполение ListView данными из таблицы Заказы
+        /// </summary>
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())

@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Icon="./Resource/logo-02.jpg"
         Title="Главное окно" Height="600" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#e0a9af"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -15,8 +25,8 @@
         </Grid.RowDefinitions>
         <Border BorderBrush="#e0a9af" BorderThickness="2" Grid.Row="0"/>
         <Label Content="Заказчик" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Background="#e0a9af" Width="100" Height="30" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
-        <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#e0a9af" Width="200" Height="40" FontSize="15" Content="Оформить заказ" Margin="10" x:Name="create_order" Click="create_order_Click"/>
-        <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#e0a9af" Width="200" Height="40" FontSize="15" Content="Просмотр заказов" Margin="60" x:Name="order_list" Click="order_list_Click"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Выход" Margin="10" x:Name="Authorization" Click="Authorization_Click"/>
+        <Button Grid.Row="1" Content="Оформить заказ" Margin="10" x:Name="create_order" Click="create_order_Click"/>
+        <Button Grid.Row="1" Content="Просмотр заказов" Margin="60" x:Name="order_list" Click="order_list_Click"/>
     </Grid>
 </Window>

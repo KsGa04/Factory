@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,13 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для Entrance_fabric.xaml
+    /// Логика взаимодействия для WriteOff_Fabric.xaml
     /// </summary>
-    public partial class Entrance_fabric : Window
+    public partial class WriteOff_Fabric : Window
     {
         private praktikaEntities _db = new praktikaEntities();
         public Пользователь пользователь;
-        public Entrance_fabric(Пользователь пользователь)
+        public WriteOff_Fabric(Пользователь пользователь)
         {
             InitializeComponent();
             this.пользователь = пользователь;
@@ -30,7 +31,6 @@ namespace Factory
                 goods.Items.Add(d.Артикул);
             }
         }
-
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -44,22 +44,20 @@ namespace Factory
             this.Hide();
         }
         /// <summary>
-        /// Поступление тканей
+        /// Списание тканей
         /// </summary>
-        private void entrance_fabric_Click(object sender, RoutedEventArgs e)
+        private void writeOff_fabric_Click(object sender, RoutedEventArgs e)
         {
-            using (praktikaEntities db= new praktikaEntities())
+            using (praktikaEntities db = new praktikaEntities())
             {
                 var good = goods.SelectedItem.ToString();
                 Ткани ткани = db.Ткани.Where(x => x.Артикул == good).FirstOrDefault();
-                ткани.Ширина = Convert.ToDouble(width.Text);
-                ткани.Цена = Convert.ToDecimal(price.Text);
-                ткани.Длина = Convert.ToDouble(length.Text);
-                ткани.Количество = Convert.ToInt32(count.Text);
+                ткани.Ширина = 0;
+                ткани.Цена = 0;
+                ткани.Количество = 0;
                 db.SaveChanges();
-                MessageBox.Show("Данные успешно обновлены");
+                MessageBox.Show("Данные успешно списаны");
             }
-
         }
     }
 }

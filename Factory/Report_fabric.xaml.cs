@@ -34,6 +34,9 @@ namespace Factory
             main.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Заполение ListView данными из таблицы Ткани
+        /// </summary>
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -49,6 +52,9 @@ namespace Factory
             storekeeperMain.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Создание отчета (excel файла) с содержанием данных таблицы Ткани
+        /// </summary>
         private void report_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, List<Ткани>> ByData = new Dictionary<string, List<Ткани>>();

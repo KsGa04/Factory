@@ -42,20 +42,19 @@ namespace Factory
             storekeeperMain.Show();
             this.Hide();
         }
-
-        private void goods_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Поступление фурнитуры
+        /// </summary>
         private void entrance_fabric_Click(object sender, RoutedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())
             {
                 var good = goods.SelectedItem.ToString();
                 Фурнитура ткани = db.Фурнитура.Where(x => x.Артикул == good).FirstOrDefault();
-                ткани.Ширина = Convert.ToDouble(length.Text);
+                ткани.Ширина = Convert.ToDouble(width.Text);
                 ткани.Цена = Convert.ToDecimal(price.Text);
+                ткани.Длина = Convert.ToDouble(length.Text);
+                ткани.Количество = Convert.ToInt32(count.Text);
                 db.SaveChanges();
                 MessageBox.Show("Данные успешно обновлены");
             }

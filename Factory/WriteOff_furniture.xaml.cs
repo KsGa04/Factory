@@ -15,22 +15,21 @@ using System.Windows.Shapes;
 namespace Factory
 {
     /// <summary>
-    /// Логика взаимодействия для Entrance_fabric.xaml
+    /// Логика взаимодействия для WriteOff_furniture.xaml
     /// </summary>
-    public partial class Entrance_fabric : Window
+    public partial class WriteOff_furniture : Window
     {
         private praktikaEntities _db = new praktikaEntities();
         public Пользователь пользователь;
-        public Entrance_fabric(Пользователь пользователь)
+        public WriteOff_furniture(Пользователь пользователь)
         {
             InitializeComponent();
             this.пользователь = пользователь;
-            foreach (var d in _db.Ткани)
+            foreach (var d in _db.Фурнитура)
             {
                 goods.Items.Add(d.Артикул);
             }
         }
-
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -44,22 +43,21 @@ namespace Factory
             this.Hide();
         }
         /// <summary>
-        /// Поступление тканей
+        /// Списание фурнитуры
         /// </summary>
-        private void entrance_fabric_Click(object sender, RoutedEventArgs e)
+        private void writeOff_furniture_Click(object sender, RoutedEventArgs e)
         {
-            using (praktikaEntities db= new praktikaEntities())
+            using (praktikaEntities db = new praktikaEntities())
             {
                 var good = goods.SelectedItem.ToString();
-                Ткани ткани = db.Ткани.Where(x => x.Артикул == good).FirstOrDefault();
-                ткани.Ширина = Convert.ToDouble(width.Text);
-                ткани.Цена = Convert.ToDecimal(price.Text);
-                ткани.Длина = Convert.ToDouble(length.Text);
-                ткани.Количество = Convert.ToInt32(count.Text);
+                Фурнитура фурнитура = db.Фурнитура.Where(x => x.Артикул == good).FirstOrDefault();
+                фурнитура.Ширина = 0;
+                фурнитура.Длина = 0;
+                фурнитура.Цена = 0;
+                фурнитура.Количество = 0;
                 db.SaveChanges();
-                MessageBox.Show("Данные успешно обновлены");
+                MessageBox.Show("Данные успешно списаны");
             }
-
         }
     }
 }

@@ -39,6 +39,9 @@ namespace Factory
             mainWindow.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Создание заказа
+        /// </summary>
         private void Create_Order_Click(object sender, RoutedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -66,7 +69,9 @@ namespace Factory
                 }
             }
         }
-
+        /// <summary>
+        /// Выбор изделия из ComboBox
+        /// </summary>
         private void goods_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -79,7 +84,9 @@ namespace Factory
                 total_sum.Text = "0";
             }
         }
-
+        /// <summary>
+        /// Изменение количества изделий
+        /// </summary>
         private void count_TextChanged(object sender, TextChangedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -108,7 +115,9 @@ namespace Factory
             customerMain.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Добавление заказа
+        /// </summary>
         private void New_order_Click(object sender, RoutedEventArgs e)
         {
             using (praktikaEntities db = new praktikaEntities())

@@ -35,6 +35,9 @@ namespace Factory
                 glavnay.Show();
             }
         }
+        /// <summary>
+        /// Регистрация пользователя
+        /// </summary>
         private void Regist_Click(object sender, RoutedEventArgs e)
         {
             if (password.Password.Length < 8)

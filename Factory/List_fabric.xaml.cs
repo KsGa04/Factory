@@ -34,6 +34,9 @@ namespace Factory
             main.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Заполение ListView данными из таблицы Ткани
+        /// </summary>
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())
@@ -43,7 +46,9 @@ namespace Factory
                 Fabric.ItemsSource = categories;
             }
         }
-
+        /// <summary>
+        /// Нахождение тканей по наименованию
+        /// </summary>
         private void Find_Click(object sender, RoutedEventArgs e)
         {
             string searchText = Find.Text;

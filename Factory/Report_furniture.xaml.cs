@@ -21,6 +21,7 @@ namespace Factory
     public partial class Report_furniture : Window
     {
         public Пользователь пользователь;
+        public object allWorkers;
         public Report_furniture(Пользователь пользователь)
         {
             InitializeComponent();
@@ -33,69 +34,62 @@ namespace Factory
             main.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Заполение ListView данными из таблицы Ткани
+        /// </summary>
         public void ListViewLoad()
         {
             using (praktikaEntities db = new praktikaEntities())
             {
-                var categories = db.Ткани.ToList();
+                var categories = db.Фурнитура.ToList();
 
                 Fabric.ItemsSource = categories;
             }
         }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             DirectorateMain storekeeperMain = new DirectorateMain(пользователь);
             storekeeperMain.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Создание отчета (excel файла) с содержанием данных таблицы Фурнитура
+        /// </summary>
         private void report_Click(object sender, RoutedEventArgs e)
         {
-            Dictionary<string, List<Фурнитура>> ByData = new Dictionary<string, List<Фурнитура>>();
-            using (praktikaEntities usersEntities = new praktikaEntities())
-            {
-                var allWorkers = usersEntities.Фурнитура.ToList().GroupBy(w => w.Наименование);
-                foreach (var group in allWorkers)
-                {
-                    ByData[group.Key] = group.ToList();
-                }
-            }
-            var app = new Excel.Application();
-            Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
-            app.Visible = true;
+            //Dictionary<string, List<Фурнитура>> ByData = new Dictionary<string, List<Фурнитура>>();
+            //using (praktikaEntities usersEntities = new praktikaEntities())
+            //{
+            //    allWorkers = usersEntities.Фурнитура.ToList();
+            //}
+            //var app = new Excel.Application();
+            //Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
+            //app.Visible = true;
+            //    Excel.Worksheet worksheet = app.Worksheets.Add();
 
-            foreach (var worker in ByData)
-            {
-                string type = worker.Key;
-                List<Фурнитура> workers = worker.Value;
-                Excel.Worksheet worksheet = app.Worksheets.Add();
+            //        worksheet.Name = "List1";
 
-                if (type != "")
-                {
-                    worksheet.Name = type;
+            //        worksheet.Cells[1, 1] = "Артикул";
+            //        worksheet.Cells[1, 2] = "Наименование";
+            //        worksheet.Cells[1, 3] = "Длина";
+            //        worksheet.Cells[1, 4] = "Ширина";
+            //        worksheet.Cells[1, 5] = "Цена";
+            //        worksheet.Cells[1, 6] = "Количество";
+            //        worksheet.Cells[1, 7] = "Вес";
+            //    int rowIndex = 2;
 
-                    worksheet.Cells[1, 1] = "Артикул";
-                    worksheet.Cells[1, 2] = "Наименование";
-                    worksheet.Cells[1, 3] = "Длина";
-                    worksheet.Cells[1, 4] = "Ширина";
-                    worksheet.Cells[1, 5] = "Цена";
-                    worksheet.Cells[1, 6] = "Количество";
-                    worksheet.Cells[1, 7] = "Вес";
-                }
-                int rowIndex = 2;
-
-                foreach (Фурнитура work in workers)
-                {
-                    worksheet.Cells[rowIndex, 1] = work.Артикул;
-                    worksheet.Cells[rowIndex, 2] = work.Наименование;
-                    worksheet.Cells[rowIndex, 3] = work.Длина;
-                    worksheet.Cells[rowIndex, 4] = work.Ширина;
-                    worksheet.Cells[rowIndex, 5] = work.Цена;
-                    worksheet.Cells[rowIndex, 6] = work.Количество;
-                    worksheet.Cells[rowIndex, 7] = work.Вес;
-                    rowIndex++;
-                }
-            }
+            //    foreach (Фурнитура work in allWorkers.)
+            //    {
+            //        worksheet.Cells[rowIndex, 1] = work.Артикул;
+            //        worksheet.Cells[rowIndex, 2] = work.Наименование;
+            //        worksheet.Cells[rowIndex, 3] = work.Длина;
+            //        worksheet.Cells[rowIndex, 4] = work.Ширина;
+            //        worksheet.Cells[rowIndex, 5] = work.Цена;
+            //        worksheet.Cells[rowIndex, 6] = work.Количество;
+            //        worksheet.Cells[rowIndex, 7] = work.Вес;
+            //        rowIndex++;
+            //    }
         }
     }
 }
